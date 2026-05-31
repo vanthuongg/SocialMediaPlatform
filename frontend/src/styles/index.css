@@ -1,0 +1,215 @@
+// [auto] Global CSS variables and base styles
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   NOVA Design System — CSS Custom Properties & Design Tokens
+   ============================================================ */
+
+@layer base {
+  :root {
+    /* ── Light Mode (Clean & Vibrant Purple-Indigo Accent) ── */
+    --background: 260 40% 98%;
+    --foreground: 262 40% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 262 40% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 262 40% 11%;
+
+    --primary: 262 85% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 239 84% 67%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 265 30% 95%;
+    --muted-foreground: 262 18% 46%;
+
+    --accent: 270 70% 95%;
+    --accent-foreground: 262 85% 50%;
+
+    --destructive: 350 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 265 25% 90%;
+    --input: 265 25% 92%;
+    --ring: 262 85% 60%;
+
+    --radius: 0.875rem;
+
+    /* Glow & Glass tokens */
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(262, 85%, 60%, 0.12);
+    --glass-shadow: 0 8px 32px 0 rgba(140, 60, 245, 0.08);
+  }
+
+  .dark {
+    /* ── Dark Mode (Deep Rich Obsidian & Neon Glow) ── */
+    --background: 260 30% 7%;
+    --foreground: 270 40% 96%;
+
+    --card: 260 25% 10%;
+    --card-foreground: 270 40% 96%;
+
+    --popover: 260 25% 10%;
+    --popover-foreground: 270 40% 96%;
+
+    --primary: 262 85% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 239 84% 70%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 260 20% 15%;
+    --muted-foreground: 270 20% 60%;
+
+    --accent: 260 25% 17%;
+    --accent-foreground: 270 40% 92%;
+
+    --destructive: 350 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 260 20% 18%;
+    --input: 260 20% 18%;
+    --ring: 262 85% 65%;
+
+    /* Glow & Glass tokens */
+    --glass-bg: rgba(20, 16, 28, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+}
+
+/* ============================================================
+   Base Reset & Global Styles
+   ============================================================ */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 selection:text-primary;
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full hover:bg-primary/40 transition-colors;
+  }
+
+  /* Focus ring */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ============================================================
+   Utility Classes & Design Polish
+   ============================================================ */
+@layer utilities {
+  /* Glassmorphism Surface Components */
+  .glass {
+    @apply backdrop-blur-xl bg-white/75 dark:bg-card/75 border border-white/20 dark:border-white/10 shadow-sm;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-md bg-white/80 dark:bg-card/85 border border-border/60 dark:border-white/10 shadow-sm transition-all duration-300;
+  }
+
+  .glass-panel {
+    @apply backdrop-blur-2xl bg-white/90 dark:bg-card/90 border border-border/80 dark:border-white/10 shadow-lg;
+  }
+
+  /* Ambient Glow Effects */
+  .glow-primary {
+    box-shadow: 0 0 25px -3px hsl(var(--primary) / 0.35);
+  }
+
+  .glow-secondary {
+    box-shadow: 0 0 25px -3px hsl(var(--secondary) / 0.35);
+  }
+
+  .glow-border {
+    @apply relative border border-transparent bg-origin-border;
+    background-clip: padding-box, border-box;
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-nova-gradient bg-clip-text text-transparent;
+  }
+
+  .text-gradient-subtle {
+    @apply bg-gradient-to-r from-foreground via-foreground/90 to-primary bg-clip-text text-transparent;
+  }
+
+  /* Skeleton shimmer */
+  .skeleton {
+    @apply bg-muted/70 animate-pulse rounded-md;
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 25%,
+      hsl(var(--muted) / 0.5) 50%,
+      hsl(var(--muted)) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Card interaction */
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5 hover:border-primary/30;
+  }
+
+  .interactive-element {
+    @apply transition-all duration-200 active:scale-95 hover:brightness-105 cursor-pointer;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Text clamp utilities */
+  .line-clamp-1 { @apply overflow-hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; }
+  .line-clamp-2 { @apply overflow-hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .line-clamp-3 { @apply overflow-hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+
+  /* Story ring gradient */
+  .story-ring {
+    background: linear-gradient(135deg, hsl(262, 85%, 60%), hsl(239, 84%, 67%), hsl(290, 80%, 60%));
+    padding: 2.5px;
+    border-radius: 9999px;
+  }
+
+  /* Online indicator pulse */
+  .online-pulse {
+    @apply animate-pulse-ring;
+  }
+}
+
