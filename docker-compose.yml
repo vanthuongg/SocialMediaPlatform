@@ -1,0 +1,54 @@
+# [auto] Multi-container orchestration config
+services:
+  # 1. Database Service (MongoDB)
+  database:
+    image: mongo:6.0-jammy
+    container_name: nova_mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    restart: unless-stopped
+    networks:
+      - nova_network
+
+  # 2. Backend Service (Express & Socket.IO)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: nova_backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    depends_on:
+      - database
+    restart: unless-stopped
+    networks:
+      - nova_network
+
+  # 3. Frontend Service (React SPA served by Nginx)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        # Bake backend API endpoints into Vite build (read from .env)
+        - VITE_API_URL=${VITE_API_URL}
+        - VITE_SOCKET_URL=${VITE_SOCKET_URL}
+    container_name: nova_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - nova_network
+
+volumes:
+  mongo_data:
+
+networks:
+  nova_network:
+    driver: bridge

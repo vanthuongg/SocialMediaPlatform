@@ -1,0 +1,9 @@
+# [auto] Docker ignore rules
+node_modules
+npm-debug.log
+.env
+.git
+.gitignore
+README.md
+Dockerfiles
+docker-compose*
