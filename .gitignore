@@ -1,3 +1,4 @@
+# [auto] Updated ignore rules for .env files
 # node modules
 node_modules/
 dist/
