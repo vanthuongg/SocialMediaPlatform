@@ -1,7 +1,6 @@
-# [auto] Project architecture and API docs updated
-# 🌐 Nova Social Network
+# 🌐 SocialMediaPlatform — Full-Stack Social Network Platform
 
-Nova is a modern, high-performance, full-stack social network platform designed with a clean, decoupled architecture. Built using **React + Vite** on the frontend and **Node.js + Express.js + Socket.IO + MongoDB** on the backend, Nova offers real-time notifications, interactive feed layouts, stories, reels, messaging, group management, and a robust admin dashboard.
+SocialMediaPlatform is a modern, high-performance, full-stack social network platform designed with a clean, decoupled architecture. Built using **React + Vite** on the frontend and **Node.js + Express.js + Socket.IO + MongoDB** on the backend, SocialMediaPlatform offers real-time notifications, interactive feed layouts, stories, reels, messaging, group management, and a robust admin dashboard.
 
 ---
 
@@ -53,7 +52,7 @@ Nova is a modern, high-performance, full-stack social network platform designed 
 ## 📂 Project Structure
 
 ```
-SocialMediaBasic/
+SocialMediaPlatform/
 ├── backend/
 │   ├── src/
 │   │   ├── config/             # Database connection, Env validation (Zod)
@@ -117,7 +116,7 @@ PORT=5000
 CLIENT_URL=http://localhost:5174
 
 # Database
-MONGO_URI=mongodb://localhost:27017/nova-social
+MONGO_URI=mongodb://localhost:27017/social-media-platform
 
 # Authentication Tokens
 JWT_ACCESS_SECRET=your_super_secure_access_secret_key_at_least_16_characters
@@ -130,7 +129,7 @@ EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASS=your_email_app_password
-EMAIL_FROM="Nova Social Network <noreply@nova.social>"
+EMAIL_FROM="SocialMediaPlatform <noreply@socialmediaplatform.com>"
 
 # Cloudinary CDN Configuration
 CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name

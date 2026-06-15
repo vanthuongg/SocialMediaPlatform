@@ -1,8 +1,7 @@
-// [auto] Frontend dependencies
 {
-  "name": "nova-frontend",
+  "name": "social-media-platform-frontend",
   "version": "1.0.0",
-  "description": "Nova Social Network — React frontend",
+  "description": "SocialMediaPlatform — React frontend",
   "type": "module",
   "scripts": {
     "dev": "vite",

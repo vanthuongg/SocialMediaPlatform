@@ -1,8 +1,7 @@
-// [auto] Project dependencies initialized
 {
-  "name": "nova-backend",
+  "name": "social-media-platform-backend",
   "version": "1.0.0",
-  "description": "Nova Social Network — Express.js REST API & Socket.IO backend",
+  "description": "SocialMediaPlatform — Express.js REST API & Socket.IO backend",
   "main": "server.js",
   "type": "module",
   "scripts": {
